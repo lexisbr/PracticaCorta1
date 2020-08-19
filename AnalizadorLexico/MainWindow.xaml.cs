@@ -23,6 +23,7 @@ namespace AnalizadorLexico
         public MainWindow()
         {
             InitializeComponent();
+            generarTabla();
 
         }
 
@@ -57,43 +58,98 @@ namespace AnalizadorLexico
                 if (int.TryParse(palabras[i], out num))
                 {
                     System.Console.WriteLine(palabras[i] + " Es un digito");
+                    lv_tokens.Items.Add(new MyItem { Tokens = palabras[i], Tipo = "Digito" });
                 }
-                else if(double.TryParse(palabras[i], out num2))
-                 {
-                    System.Console.WriteLine(palabras[i] + " Es un double");
-                }
-                d[0] = "";
-                d[1] = "";
-                foreach (char caracter in palabras[i])
+                else if (double.TryParse(palabras[i], out num2))
                 {
+                    System.Console.WriteLine(palabras[i] + " Es un double");
+                    lv_tokens.Items.Add(new MyItem { Tokens = palabras[i], Tipo = "Double" });
+                }
+                else
+                {
+                    d[0] = "";
+                    d[1] = "";
+                    foreach (char caracter in palabras[i])
+                    {
 
-                    //System.Console.WriteLine(caracter);
-                    //System.Console.WriteLine(">>>"+caracter.Equals('Q'));
 
-                    if ((Char.IsLetter(caracter))&&(!caracter.Equals('Q')))
-                    {
-                        System.Console.WriteLine(palabras[i]+" Es una palabra");
-                        break;
-                    }else if(caracter.Equals('Q'))
-                    {
-                        d[0] = "Q";
-                    }else if (caracter.Equals('.'))
-                    {
-                        if (d[0].Equals("Q"))
+                       System.Console.WriteLine(d[0] + d[1]);
+                        //System.Console.WriteLine(">>>"+caracter.Equals('Q'));
+
+                        if ((Char.IsLetter(caracter)) && (!caracter.Equals('Q')))
                         {
-                            d[1] = ".";
+                            System.Console.WriteLine(palabras[i] + " Es una palabra");
+                            lv_tokens.Items.Add(new MyItem { Tokens = palabras[i], Tipo = "Palabra" });
+                            break;
                         }
-                    }else if (Char.IsDigit(caracter))
-                    {
-                        if (d[0].Equals("Q") && d[1].Equals("."))
+                        if (caracter.Equals('Q'))
                         {
-                            System.Console.WriteLine(palabras[i] + " Es dinero");
+                            d[0] = "Q";
                         }
+                        if (caracter.Equals('.'))
+                        {
+                            if (d[0].Equals("Q"))
+                            {
+                                d[1] = ".";
+                            }
+                        }
+                        else if (Char.IsDigit(caracter))
+                        {
+                            //Compre 5 manzanas por un costo de Q20.00
+                            if (d[0].Equals("Q") && d[1].Equals("."))
+                            {
+                                System.Console.WriteLine(palabras[i] + " Es dinero");
+                                lv_tokens.Items.Add(new MyItem { Tokens = palabras[i], Tipo = "Moneda" });
+                                break;
+                            }
+                          /*  if (d[0].Equals("Q") && d[1].Equals("."))
+                            {
+                                System.Console.WriteLine(palabras[i] + " Es dinero");
+                                lv_tokens.Items.Add(new MyItem { Tokens = palabras[i], Tipo = "Moneda" });
+                                d[0] = " ";
+                                d[1] = " ";
+                                break;
+                            }*/
+                          /*  else
+                            {
+                                System.Console.WriteLine(palabras[i] + " Es una palabra");
+                                lv_tokens.Items.Add(new MyItem { Tokens = palabras[i], Tipo = "Palabra" });
+                                break;
+                            }*/
+
+                        }
+
+
                     }
-
                 }
             }
             
         }
+        public void generarTabla()
+        {
+            // Add columns
+            var gridView = new GridView();
+            lv_tokens.View = gridView;
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Tokens",
+                DisplayMemberBinding = new Binding("Tokens"),
+                Width = 200
+
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Tipo",
+                DisplayMemberBinding = new Binding("Tipo"),
+                Width = 200
+            });
+        }
+        public class MyItem
+        {
+            public string Tokens { get; set; }
+            public string Tipo { get; set; }
+        }
     }
+
+    
 }
