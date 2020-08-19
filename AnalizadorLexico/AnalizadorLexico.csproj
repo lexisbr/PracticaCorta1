@@ -100,5 +100,11 @@
   <ItemGroup>
     <Resource Include="formanag_fondo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cargar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="flush.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

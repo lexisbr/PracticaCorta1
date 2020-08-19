@@ -23,7 +23,7 @@ namespace AnalizadorLexico
         public MainWindow()
         {
             InitializeComponent();
-            generarTabla();
+            cargarTabla();
 
         }
 
@@ -125,7 +125,7 @@ namespace AnalizadorLexico
             }
             
         }
-        public void generarTabla()
+        public void cargarTabla()
         {
             // Add columns
             var gridView = new GridView();
@@ -148,6 +148,15 @@ namespace AnalizadorLexico
         {
             public string Tokens { get; set; }
             public string Tipo { get; set; }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            lv_tokens.Items.Clear();
+            cargarTabla();
+
+
+
         }
     }
 

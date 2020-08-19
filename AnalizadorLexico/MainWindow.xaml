@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnalizadorLexico"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="618">
+        Title="MainWindow" Height="487" Width="618">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
@@ -15,14 +15,24 @@
             <ImageBrush ImageSource="formanag_fondo.jpg"/>
         </Grid.Background>
         <Label Content="Analizador Lexico&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Height="61" Width="265" FontSize="30" FontWeight="Bold"/>
-        <TextBox x:Name="texto" HorizontalAlignment="Left" Height="23" Margin="27,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2"/>
-        <Button Content="Ingresar" Grid.Column="1" HorizontalAlignment="Left" Margin="371,90,0,0" VerticalAlignment="Top" Width="102" Height="23" Click="Button_Click"/>
-        <ListView x:Name="lv_tokens" HorizontalAlignment="Left" Height="224" Margin="62,155,0,0" VerticalAlignment="Top" Width="486" Grid.ColumnSpan="2">
+        <TextBox x:Name="texto" HorizontalAlignment="Left" Height="23" Margin="61,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="486" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2"/>
+        <Button Content="Cargar" Grid.Column="1" HorizontalAlignment="Left" Margin="150,140,0,0" VerticalAlignment="Top" Width="43" Height="40" Click="Button_Click" RenderTransformOrigin="0.558,0.5">
+            <Button.Background>
+                <ImageBrush ImageSource="cargar (1).png" Stretch="None"/>
+            </Button.Background>
+        </Button>
+        <ListView x:Name="lv_tokens" HorizontalAlignment="Left" Height="224" Margin="32,194,0,0" VerticalAlignment="Top" Width="400" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="Ingrese oracion:" HorizontalAlignment="Left" Margin="61,86,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold"/>
+        <Button Content="Flush" Grid.Column="1" HorizontalAlignment="Left" Margin="258,140,0,0" VerticalAlignment="Top" Width="43" Height="40" Click="Button_Click_1">
+            <Button.Background>
+                <ImageBrush ImageSource="flush.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
