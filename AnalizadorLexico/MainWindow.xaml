@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnalizadorLexico"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="618">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="107*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="formanag_fondo.jpg"/>
+        </Grid.Background>
+        <Label Content="Analizador Lexico&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Height="61" Width="265" FontSize="30" FontWeight="Bold"/>
+        <TextBox x:Name="texto" HorizontalAlignment="Left" Height="23" Margin="27,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2"/>
+        <Button Content="Ingresar" Grid.Column="1" HorizontalAlignment="Left" Margin="371,90,0,0" VerticalAlignment="Top" Width="102" Height="23" Click="Button_Click"/>
+        <DataGrid x:Name="TablaTokens" HorizontalAlignment="Left" Height="217" Margin="34,167,0,0" VerticalAlignment="Top" Width="403" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Tokens" Width="200"/>
+                <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Tipo" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

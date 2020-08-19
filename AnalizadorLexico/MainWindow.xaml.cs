@@ -23,6 +23,56 @@ namespace AnalizadorLexico
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GenerarTokens(texto.Text);
+        }
+        
+        public void GenerarTokens(String oracion)
+        {
+            char delimitador = ' ';
+            int num = 0;
+            int o = 0;
+            String[] palabras = oracion.Split(delimitador);
+            for (int i = 0; i < palabras.Length; i++)
+            {
+            System.Console.WriteLine(">>>"+palabras[i]);
+
+            }
+
+            for (int i = 0; i < palabras.Length; i++)
+            {
+                if (int.TryParse(palabras[i], out num))
+                {
+                    System.Console.WriteLine(palabras[i] + " Es un digito");
+                }
+                foreach (char caracter in palabras[i])
+                {
+
+                    System.Console.WriteLine(caracter);
+                    if (Char.IsLetter(caracter))
+                    {
+                        System.Console.WriteLine(palabras[i]+" Es una palabra");
+                        break;
+                    }
+                    if(caracter.Equals("Q"))
+                    {
+
+                    }
+
+                    
+                }
+            }
+            
         }
     }
 }
